@@ -9,6 +9,7 @@ package tienda;
  */
 public abstract class Cliente implements Descontable{
 	
+	//Atrubutos
 	protected String nombre;
 	protected String apellidos;
 	protected String dni;
@@ -17,7 +18,7 @@ public abstract class Cliente implements Descontable{
 	
 	
 	/**
-	 * 
+	 * Constructor
 	 */
 	public Cliente() {
 		super();
@@ -45,7 +46,7 @@ public abstract class Cliente implements Descontable{
 		this.direccion = direccion;
 	}
 
-
+	//Getters y Setters
 	public String getNombre() {
 		return nombre;
 	}
@@ -141,6 +142,7 @@ public abstract class Cliente implements Descontable{
 	}
 	
 	public abstract double descuento();
+
 	
 	
 }

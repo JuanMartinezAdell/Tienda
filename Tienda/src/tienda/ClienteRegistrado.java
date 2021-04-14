@@ -15,6 +15,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class ClienteRegistrado extends Cliente{
 	
+	//Atributos
 	private String email;
 	private String password;
 	private LocalDate fechaNacimiento;
@@ -23,7 +24,7 @@ public class ClienteRegistrado extends Cliente{
 	
 
 	/**
-	 * 
+	 * Constructor
 	 */
 	public ClienteRegistrado() {
 		super();
@@ -46,7 +47,7 @@ public class ClienteRegistrado extends Cliente{
 		this.fechaNacimiento=fechaNacimiento;
 	}
 
-
+	//Gettesr y Setters
 	public String getEmail() {
 		return email;
 	}
@@ -66,10 +67,6 @@ public class ClienteRegistrado extends Cliente{
 
 	public LocalDate getFechaRegistro() {
 		return fechaRegistro;
-	}
-
-	public void setFechaRegistro(LocalDate fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
 	}
 
 	public LocalDate getFechaNacimiento() {
@@ -94,21 +91,36 @@ public class ClienteRegistrado extends Cliente{
 		builder.append("]");
 		return builder.toString();
 	}
-
+	
+	//Metodos
+	
+	/**
+	 *Compruebo si el password es correcto comparnadolo con la contrasela guardad 
+	 * 
+	 * @param pass
+	 * @return Si coincide o no el password
+	 **/ 
+	public boolean chekPass(String pas) {
+		if (DigestUtils.sha256Hex(pas).equals(password))
+			return true;
+		
+		return false;
+	}
+	
+	
+	/**
+	 * Devuelvo al cantidad a descontar
+	 * 
+	 * @return Devuelvo 5 euros de descuento
+	 */
+	
 	@Override
 	public double descuento() {
 		// TODO Auto-generated method stub
-		return 5;
+		return 5; //Aplico descuento de 5€
 		
 	}
 	
-	public boolean checkPassword(String pass) {
-		
-		if(this.password.equals(DigestUtils.sha256Hex(pass)))
-			return true;
-		else
-			return false;
-		
-	}
+	
 
 }

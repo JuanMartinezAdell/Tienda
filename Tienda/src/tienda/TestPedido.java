@@ -5,6 +5,7 @@ package tienda;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -27,7 +28,7 @@ public class TestPedido {
 		// TODO Auto-generated method stub
 		
 		
-		Cliente cliente = new ClienteRegistrado("Juan", "Maritnez", "2234567j", "Overa", "Limones", "jumadell@gmail", 
+		ClienteRegistrado cliente = new ClienteRegistrado("Juan", "Martinez", "2234567j", "Overa", "Limones", "jumadell@gmail", 
 															"12345", LocalDate.of(1980, 7, 20));
 		
 		
@@ -55,28 +56,16 @@ public class TestPedido {
 		
 		System.out.println(ped);
 		
-		try (PDDocument factura = new PDDocument()) {
-            PDPage page = new PDPage(PDRectangle.A4);
-            factura.addPage(page);
-
-            PDPageContentStream contentStream = new PDPageContentStream(factura, page);
-
-            // Text
-            contentStream.beginText();
-            contentStream.setFont(PDType1Font.TIMES_BOLD, 18);
-            contentStream.newLineAtOffset( 20, page.getMediaBox().getHeight() - 52);
-            contentStream.showText("Factura BiciLocura");
-            contentStream.endText();
-
-           // Image
-            /*PDImageXObject image = PDImageXObject.createFromByteArray(factura, TestPedido.class.getResourceAsStream("/TiendaImage").readAllBytes(), "Java Logo");
-            contentStream.drawImage(image, 20, 20, image.getWidth() / 3, image.getHeight() / 3);*/
-
-            contentStream.close();
-
-            factura.save("factura.pdf");
-		
-		}
+		/**********************
+		 * 
+		 *Pasamos a PDF 
+		 *
+		 **********************/
+		if (cliente.chekPass("12345")) {
+			ped.toPDF();
+			System.out.println(cliente.getPassword());
+		} else
+			System.out.println("La contraseña suministrada no coincide con la almacenada");
 		
 	}
 

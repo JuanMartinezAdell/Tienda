@@ -12,7 +12,7 @@ public class ClienteNoRegistrado extends Cliente{
 	
 	
 	/**
-	 * 
+	 * Constructor
 	 */
 	public ClienteNoRegistrado() {
 		super();
@@ -42,12 +42,19 @@ public class ClienteNoRegistrado extends Cliente{
 		builder.append("]");
 		return builder.toString();
 	}
-
+	
+	
+	/**
+	 * Devuelvo al cantidad a descontar
+	 * 
+	 * @return Devuelvo 0 euros de descuento
+	 */
+	
 	@Override
 	public double descuento() {
 		// TODO Auto-generated method stub
 		
-		
+		//No aplico el descuento
 		
 		return 0;
 	}

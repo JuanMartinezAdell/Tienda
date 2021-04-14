@@ -56,7 +56,13 @@ public class LineaPedido {
 		builder.append("]");
 		return builder.toString();
 	}
-
+	
+	/**
+	 * Calcula el subtotal del precio por al cantidad y el iva
+	 * 
+	 * @return El subtotal calcualdo en esta linea
+	 * 
+	 */
 
 	public double subtotal() {
 		
